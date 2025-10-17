@@ -4,18 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3D Model Viewer</title>
+
+  <!-- Model Viewer -->
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer/dist/model-viewer.min.js"></script>
+
   <style>
     html, body {
       margin: 0;
       height: 100%;
-      background: #ffffff; /* PURE WHITE */
+      background: #ffffff; /* PURE WHITE page */
       overflow: hidden;
     }
+    /* Make the component background pure white and override any theme */
     model-viewer {
       width: 100%;
       height: 100%;
-      background-color: #ffffff; /* PURE WHITE */
+      background-color: #ffffff !important; /* PURE WHITE canvas */
       --poster-color: #ffffff;
     }
   </style>
@@ -26,12 +30,21 @@
     alt="3D model"
     camera-controls
     auto-rotate
-    shadow-intensity="0.8"
+    reveal="auto"
+
+    /* Kill any gray from ground shadows */
+    shadow-intensity="0"
+
+    /* Use a neutral, untinted IBL (no skybox visible) */
+    environment-image="neutral"
+
+    /* Keep brightness natural; bump if needed */
     exposure="1"
-    ar
-    ar-modes="webxr scene-viewer quick-look"
+
+    /* Make sure nothing leaks a background */
     crossorigin="anonymous">
   </model-viewer>
 </body>
 </html>
+
 
